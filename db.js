@@ -1,5 +1,5 @@
 const { connection, sync } = require ("./models/sequelize");
-const User = require("./models/user");
+const User = require("./models/admin");
 
 exports.initDatabase = async function() {
 

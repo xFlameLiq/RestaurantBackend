@@ -8,7 +8,7 @@ initDatabase();
 const app = express(); //Instanciando express
 
 //Routers
-const userRouter = require("./routers/user");
+const userRouter = require("./routers/admin");
 
 
 //Permite trabajar con el archivo JSON.
@@ -17,6 +17,8 @@ app.use(express.json());
 
 
 app.use(userRouter);
+// app.use('/admin', );
+
 
 app.get("/", (request, response) => {
     console.log("HELLO WORLD!!!");
