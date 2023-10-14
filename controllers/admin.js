@@ -5,11 +5,11 @@ exports.getAdmin = async function(request, response){
         const admin = await adminService.findAll();
         response.status(200).json(admin);
     } catch(e) {
-        response.status(500).json({
+        response.status(404).json({
             message: e.message,
             messageDev: "No se han podido leer los usuarios",
-            code: "500",
-            error: "ERR_READ_USER"
+            error: "ERR_READ_USER",
+            details: e
         })
         console.error(">>> OH, error");
         console.error(e);
@@ -17,16 +17,16 @@ exports.getAdmin = async function(request, response){
 }
 
 exports.getAdminById = async function(request, response){
+    const id = request.params.id;
     try {
-        const id = request.params.id;
         const admin = await adminService.findById(id);
         response.status(200).json(admin);
     } catch(e) {
-        response.status(500).json({
+        response.status(404).json({
             message: e.message,
             messageDev: "No se ha podido leer el usuario",
-            code: "500",
-            error: "ERR_READ_USER"
+            error: "ERR_READ_USER",
+            details: e
         })
         console.error(">>> OH, error");
         console.error(e);
@@ -35,38 +35,33 @@ exports.getAdminById = async function(request, response){
 
 exports.insertAdmin = async function(request, response) {
     const {username, password} = request.body;
-    // const result = createUserSchema.validate(request.body, {abortEarly: false});
-
-    // if(result.error) {
-    //     return response.status(400).json({error: "Entrada inválida", details: result.error.details});
-    // }
     try {
         const admin = await adminService.createAdmin({username, password});
         response.status(201).json(admin);
     } catch(e) {
-        response.status(500).json({
+        response.status(400).json({
             message: e.message,
             messageDev: "No se ha podido crear el usuario",
-            code: "500",
-            error: "ERR_CREATE_USER"
-        })
+            error: "ERR_CREATE_USER",
+            details: e
+        });
         console.error(">>> OH, error");
         console.error(e);
     }
 }
 
 exports.updateAdmin = async function(request, response){
+    const id = request.params.id;
+    const content = request.body;
     try {
-        const id = request.params.id;
-        const content = request.body;
         const admin = await adminService.update(id, content);
         response.status(204).json(admin);
     } catch(e) {
-        response.status(500).json({
+        response.status(400).json({
             message: e.message,
             messageDev: "No se ha podido actualizar el usuario",
-            code: "500",
-            error: "ERR_UPDATE_USER"
+            error: "ERR_UPDATE_USER",
+            details: e
         })
         console.error(">>> OH, error");
         console.error(e);
@@ -74,16 +69,16 @@ exports.updateAdmin = async function(request, response){
 }
 
 exports.deleteAdmin = async function(request, response){
+    const id = request.params.id;
     try {
-        const id = request.params.id;
         await adminService.deleteById(id);
         response.status(204).end();
     } catch(e) {
-        response.status(500).json({
+        response.status(404).json({
             message: e.message,
             messageDev: "No se ha podido eliminar el usuario",
-            code: "500",
-            error: "ERR_DELETE_USER"
+            error: "ERR_DELETE_USER",
+            details: e
         })
         console.error(">>> OH, error");
         console.error(e);

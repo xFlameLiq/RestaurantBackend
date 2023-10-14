@@ -24,7 +24,7 @@ exports.connection = async function() {
         console.log(">>> Connected to the database");
     } catch(e) {
         console.error(">>> Connection refused");
-        console.error("e");
+        console.error(e);
     }
 }
 
@@ -40,6 +40,6 @@ exports.sync = async function() {
 
     } catch(e) {
         console.error(" >>> Database can't be updated");
-        console.error("e");
+        console.error(e);
     }
 }
