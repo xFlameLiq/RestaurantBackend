@@ -6,6 +6,7 @@ module.exports = sequelize.define("admin", {
     username: {
       type: DataTypes.STRING(100),
       allowNull: false,
+      unique: true,
 
       validate: {
         is: /^[a-z]+$/i
