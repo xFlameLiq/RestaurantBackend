@@ -9,15 +9,14 @@ const app = express(); //Instanciando express
 
 //Routers
 const adminRouter = require("./routers/admin");
+const employeeRouter = require("./routers/employee");
 
 
 //Permite trabajar con el archivo JSON.
 app.use(express.json());
 
-
-
 app.use(adminRouter);
-
+app.use(employeeRouter)
 
 app.get("/", (request, response) => {
     console.log("HELLO WORLD!!!");

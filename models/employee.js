@@ -8,8 +8,13 @@ module.exports = sequelize.define("employee", {
       allowNull: false,
     },
     password: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING,
         allowNull: false
+    },
+    status: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
     }
   }, {
     // Other model options go here
