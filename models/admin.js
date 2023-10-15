@@ -13,7 +13,7 @@ module.exports = sequelize.define("admin", {
       }
     },
     password: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING,
       allowNull: false,
     }
   }, {
