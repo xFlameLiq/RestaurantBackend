@@ -36,4 +36,11 @@ exports.update = async function(id, data){
             id: id
         }
     });
+}
+exports.findByUsername = function (username) {
+    return Admin.findOne({
+        where: {
+            username
+        },
+    });
 };

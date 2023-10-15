@@ -16,7 +16,10 @@
     "express": "^4.18.2",
     "express-joi-validation": "^5.0.1",
     "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.6.1",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
     "sequelize": "^6.33.0"
   },
   "devDependencies": {

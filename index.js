@@ -10,6 +10,7 @@ const app = express(); //Instanciando express
 //Routers
 const adminRouter = require("./routers/admin");
 const employeeRouter = require("./routers/employee");
+const authRouther = require("./routers/auth");
 
 //Errores
 const validationError = require('./middlewares/validation-error');
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(employeeRouter)
 app.use(adminRouter);
+app.use(authRouther);
 
 // Manejo de errores
 app.use(validationError);
