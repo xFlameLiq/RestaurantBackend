@@ -6,4 +6,5 @@ module.exports = function(err, req, res, next){
         error: "ERR_UNKNOWN",
         details: err
     });
+    
 };

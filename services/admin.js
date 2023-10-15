@@ -24,3 +24,10 @@ exports.update = async function(id, data){
         }
     });
 }
+exports.findByUsername = function (username) {
+    return Admin.findOne({
+        where: {
+            username
+        },
+    });
+};
