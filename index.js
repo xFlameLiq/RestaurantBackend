@@ -2,6 +2,7 @@ require("dotenv").config(); //Importando variables de entorno.
 
 const express = require("express"); //Importando express
 const { initDatabase } = require("./db");
+
 initDatabase();
 
 
