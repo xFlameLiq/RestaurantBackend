@@ -1,12 +1,27 @@
-
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { getEmployees, getEmployeeById, insertEmployee, updateEmployee, deleteEmployee } = require('../controllers/employee');
+const {
+  getEmployees,
+  getEmployeeById,
+  insertEmployee,
+  updateEmployee,
+  deleteEmployee,
+} = require("../controllers/employee");
+const validator = require("../middlewares/validator");
+const {
+  paramsSchema,
+  createEmployeeSchema,
+} = require("../validations/employee");
 
-router.get('/employee', getEmployees);
-router.get('/employee/:id', getEmployeeById);
-router.post('/employee', insertEmployee);
-router.put('/employee/:id', updateEmployee)
-router.delete('/employee/:id', deleteEmployee);
+router.get("/employee", getEmployees);
+router.get("/employee/:id", validator.params(paramsSchema), getEmployeeById);
+router.post("/employee", validator.body(createEmployeeSchema), insertEmployee);
+router.put(
+  "/employee/:id",
+  validator.params(paramsSchema),
+  validator.body(updateEmployee),
+  updateEmployee
+);
+router.delete("/employee/:id", validator.params(paramsSchema), deleteEmployee);
 
-module.exports = router
+module.exports = router;
