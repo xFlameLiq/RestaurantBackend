@@ -11,6 +11,7 @@ const validator = require("../middlewares/validator");
 const {
   paramsSchema,
   createEmployeeSchema,
+  updateEmployeeSchema
 } = require("../validations/employee");
 
 router.get("/employee", getEmployees);
