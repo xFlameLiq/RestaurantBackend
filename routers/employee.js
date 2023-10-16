@@ -19,7 +19,7 @@ router.post("/employee", validator.body(createEmployeeSchema), insertEmployee);
 router.put(
   "/employee/:id",
   validator.params(paramsSchema),
-  validator.body(updateEmployee),
+  validator.body(updateEmployeeSchema),
   updateEmployee
 );
 router.delete("/employee/:id", validator.params(paramsSchema), deleteEmployee);
