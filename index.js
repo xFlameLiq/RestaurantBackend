@@ -11,6 +11,7 @@ const app = express(); //Instanciando express
 const adminRouter = require("./routers/admin");
 const employeeRouter = require("./routers/employee");
 const authRouther = require("./routers/auth");
+const alimentRouter = require("./routers/aliment")
 
 //Errores
 const validationError = require('./middlewares/validation-error');
@@ -22,6 +23,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(employeeRouter)
 app.use(adminRouter);
 app.use(authRouther);
+app.use(alimentRouter);
 
 // Manejo de errores
 app.use(validationError);

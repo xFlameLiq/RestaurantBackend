@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const jwtValidator = require('../middlewares/jwt');
+
 const {
   getEmployees,
   getEmployeeById,
@@ -14,15 +16,15 @@ const {
   updateEmployeeSchema
 } = require("../validations/employee");
 
-router.get("/employee", getEmployees);
-router.get("/employee/:id", validator.params(paramsSchema), getEmployeeById);
-router.post("/employee", validator.body(createEmployeeSchema), insertEmployee);
+router.get("/employee",jwtValidator, getEmployees);
+router.get("/employee/:id",jwtValidator, validator.params(paramsSchema), getEmployeeById);
+router.post("/employee",jwtValidator, validator.body(createEmployeeSchema), insertEmployee);
 router.put(
-  "/employee/:id",
+  "/employee/:id",jwtValidator,
   validator.params(paramsSchema),
   validator.body(updateEmployeeSchema),
   updateEmployee
 );
-router.delete("/employee/:id", validator.params(paramsSchema), deleteEmployee);
+router.delete("/employee/:id",jwtValidator, validator.params(paramsSchema), deleteEmployee);
 
 module.exports = router;
