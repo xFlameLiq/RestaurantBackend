@@ -16,6 +16,7 @@ exports.login = async (request, response) => {
 
     const token = jwt.sign({id: user.id, username: user.username}, process.env.JWT_SECRET);
     response.status(200).json({
+        code: "SUCCESS_AUTH",
         jwt: token,
     });
 
