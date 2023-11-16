@@ -34,9 +34,9 @@ exports.getAdminById = async function(request, response){
 }
 
 exports.insertAdmin = async function(request, response) {
-    const {username, password} = request.body;
+    const {name, lastname, address, phone, username, password} = request.body;
     try {
-        const admin = await adminService.createAdmin({username, password});
+        const admin = await adminService.createAdmin({name, lastname, address, phone, username, password});
         response.status(201).json(admin);
     } catch(e) {
         response.status(400).json({
