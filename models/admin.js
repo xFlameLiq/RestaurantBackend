@@ -28,7 +28,7 @@ module.exports = sequelize.define("admin", {
       allowNull: false,
       unique: true,
       validate: {
-        is: /^[a-zA-Z0-9_-]+$/i
+        is: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i
       }
     },
     password: {

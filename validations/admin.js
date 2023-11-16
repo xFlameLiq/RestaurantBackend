@@ -5,7 +5,7 @@ exports.createAdminSchema = Joi.object({
     lastname: Joi.string().pattern(/^[A-Za-z\s'-]+$/).max(100).required(),
     address: Joi.string().pattern(/^[A-Za-z0-9\s#'-]+$/).max(150).required(),
     phone: Joi.string().pattern(/^\d+$/).max(10).required(),
-    username: Joi.string().pattern(/^[a-zA-Z0-9_-]+$/).max(100).required(),
+    username: Joi.string().pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/).max(100).required(),
     password: Joi.string().min(8).max(50).required()
 });
 
