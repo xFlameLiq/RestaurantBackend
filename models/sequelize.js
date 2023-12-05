@@ -1,5 +1,6 @@
 const { Sequelize } = require("sequelize");
 
+
 const {
     MYSQL_HOST,
     MYSQL_DATABASE,
@@ -8,12 +9,19 @@ const {
     MYSQL_FORCE_UPDATE,
 } = process.env
 
+// const sequelize = new Sequelize({
+//     dialect: "mysql",
+//     host: MYSQL_HOST,
+//     username: MYSQL_USERNAME,
+//     password: MYSQL_PASSWORD,
+//     database: MYSQL_DATABASE,
+// });
+
 const sequelize = new Sequelize({
-    dialect: "mysql",
-    host: MYSQL_HOST,
-    username: MYSQL_USERNAME,
-    password: MYSQL_PASSWORD,
-    database: MYSQL_DATABASE,
+    //Indicamos que vamos a conectarnos con sqlite
+    dialect: 'sqlite',
+    //Lugar de almacenamiento del archivo de la DB
+    storage: './db.db'
 });
 
 exports.sequelize = sequelize;
