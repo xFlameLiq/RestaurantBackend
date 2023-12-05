@@ -1,12 +1,14 @@
 require("dotenv").config(); //Importando variables de entorno.
 const express = require("express"); //Importando express
+const cors = require('cors');
 
 const { initDatabase } = require("./db");
 
 initDatabase();
 
-const app = express(); //Instanciando express
 
+const app = express(); //Instanciando express
+app.use(cors());
 //Routers
 const adminRouter = require("./routers/admin");
 const employeeRouter = require("./routers/employee");

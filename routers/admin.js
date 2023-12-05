@@ -6,7 +6,6 @@ const {
     insertAdmin,
     updateAdmin,
     deleteAdmin,
-
 } = require('../controllers/admin');
 const AdminSchema = require('../validations/admin');
 const validator = require('../middlewares/validator');
